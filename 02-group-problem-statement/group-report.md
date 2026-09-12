@@ -93,7 +93,8 @@ Không chọn #16 — Đọc tài liệu, phân loại Requirement / Action / Qu
 
 **Disagreement (nếu có — ai lo gì, chốt ra sao):**
 
-```Ban đầu nhóm phân vân giữa #6 và #10 vì cả hai đều có điểm cao và workflow rõ. Một số thành viên nghiêng về #10 vì impact business lớn hơn, nhưng nhóm lo scope quá rộng và khó đo chất lượng insight trong lab. Cuối cùng nhóm chốt #6 vì input/output rõ hơn, dễ kiểm thử với mẫu nhỏ, dễ đo thời gian và dễ xác định AI nên can thiệp ở bước nào. Nhóm thống nhất giữ #10 như một candidate tốt nhưng chưa chọn cho scope hôm nay.
+```
+Ban đầu nhóm phân vân giữa #6 và #10 vì cả hai đều có điểm cao và workflow rõ. Một số thành viên nghiêng về #10 vì impact business lớn hơn, nhưng nhóm lo scope quá rộng và khó đo chất lượng insight trong lab. Cuối cùng nhóm chốt #6 vì input/output rõ hơn, dễ kiểm thử với mẫu nhỏ, dễ đo thời gian và dễ xác định AI nên can thiệp ở bước nào. Nhóm thống nhất giữ #10 như một candidate tốt nhưng chưa chọn cho scope hôm nay.
 
 ```
 
@@ -111,7 +112,8 @@ Không chọn #16 — Đọc tài liệu, phân loại Requirement / Action / Qu
 
 **Insight sau validation (1-2 câu — pain thật nằm ở đâu):**
 
-```Pain thật không nằm ở việc có ảnh invoice hay có JSON output, mà nằm ở bước người kiểm thử phải tự đối chiếu từng field giữa hai nguồn và phát hiện mismatch thủ công. Đây là bước lặp lại, tốn thời gian, dễ mỏi mắt và dễ bỏ sót lỗi nhỏ nếu invoice có nhiều trường thông tin.
+```
+Pain thật không nằm ở việc có ảnh invoice hay có JSON output, mà nằm ở bước người kiểm thử phải tự đối chiếu từng field giữa hai nguồn và phát hiện mismatch thủ công. Đây là bước lặp lại, tốn thời gian, dễ mỏi mắt và dễ bỏ sót lỗi nhỏ nếu invoice có nhiều trường thông tin.
 
 ```
 
@@ -217,13 +219,15 @@ Fallback: nếu AI/OCR đọc sai ảnh, confidence thấp hoặc mismatch repor
 
 **Bài toán nhóm nằm ở ô nào:**
 
-```Độ mơ hồ thấp, độ phức tạp trung bình/cao.
+```
+Độ mơ hồ thấp, độ phức tạp trung bình/cao.
 
 ```
 
 **Vì sao (2-3 câu):**
 
-```Bài toán có tiêu chí đúng/sai rõ vì value trong JSON phải khớp với thông tin trên ảnh invoice. Tuy nhiên workflow không chỉ là một rule đơn giản vì cần đọc ảnh, extract field, chuẩn hóa format và so sánh với JSON. Vì vậy hướng phù hợp là Workflow có AI/OCR hỗ trợ bước đọc invoice, kết hợp rule/script để compare và người thật review.
+```
+Bài toán có tiêu chí đúng/sai rõ vì value trong JSON phải khớp với thông tin trên ảnh invoice. Tuy nhiên workflow không chỉ là một rule đơn giản vì cần đọc ảnh, extract field, chuẩn hóa format và so sánh với JSON. Vì vậy hướng phù hợp là Workflow có AI/OCR hỗ trợ bước đọc invoice, kết hợp rule/script để compare và người thật review.
 
 ```
 
@@ -249,18 +253,21 @@ Có. Nhóm hạ từ Agent xuống Workflow vì chưa cần tự động hóa to
 
 **Mức chọn:**
 
-```Workflow
+```
+Workflow
 ```
 
 **Vì sao chọn (3-4 câu):**
 
-```Nhóm chọn Workflow vì bài toán có nhiều bước rõ ràng nhưng không cần AI tự lập kế hoạch. AI/OCR chỉ hỗ trợ đọc và extract thông tin từ ảnh invoice, còn rule/script xử lý phần so sánh có logic rõ. Người kiểm thử vẫn review mismatch report trước khi báo lỗi, nên risk AI sai được kiểm soát. Workflow giúp giảm thời gian đối chiếu thủ công mà không trao toàn bộ quyết định cho AI.
+```
+Nhóm chọn Workflow vì bài toán có nhiều bước rõ ràng nhưng không cần AI tự lập kế hoạch. AI/OCR chỉ hỗ trợ đọc và extract thông tin từ ảnh invoice, còn rule/script xử lý phần so sánh có logic rõ. Người kiểm thử vẫn review mismatch report trước khi báo lỗi, nên risk AI sai được kiểm soát. Workflow giúp giảm thời gian đối chiếu thủ công mà không trao toàn bộ quyết định cho AI.
 
 ```
 
 **Vì sao không chọn mức đơn giản hơn (2-3 câu):**
 
-```Không chọn chỉ Rule vì rule không đọc được ảnh invoice JPG nếu chưa có dữ liệu ground truth dạng structured data. Rule vẫn hữu ích cho bước compare sau khi OCR/AI đã extract field, nhưng không đủ để giải quyết bottleneck chính là đọc ảnh và đối chiếu với JSON.
+```
+Không chọn chỉ Rule vì rule không đọc được ảnh invoice JPG nếu chưa có dữ liệu ground truth dạng structured data. Rule vẫn hữu ích cho bước compare sau khi OCR/AI đã extract field, nhưng không đủ để giải quyết bottleneck chính là đọc ảnh và đối chiếu với JSON.
 
 ```
 
@@ -291,36 +298,42 @@ Có. Nhóm hạ từ Agent xuống Workflow vì chưa cần tự động hóa to
 
 **Decision:**
 
-```Go với scope nhỏ
+```
+Go với scope nhỏ
 ```
 
 **Lý do (3-4 câu dựa trên bằng chứng):**
 
-```Nhóm quyết định Go với scope nhỏ vì problem có actor, workflow, bottleneck và metric khá rõ. Baseline hiện tại có thể đo bằng thời gian kiểm thử mỗi batch, số field phải đối chiếu và số mismatch bị bỏ sót. Research cho thấy đã có các giải pháp OCR/invoice extraction như AWS Textract, Google Document AI và Azure Document Intelligence, nên nhóm không cần build OCR từ đầu mà chỉ cần thiết kế workflow hỗ trợ compare và review. Vì người kiểm thử vẫn review mismatch report trước khi báo lỗi, rủi ro AI sai có thể kiểm soát được.
+```
+Nhóm quyết định Go với scope nhỏ vì problem có actor, workflow, bottleneck và metric khá rõ. Baseline hiện tại có thể đo bằng thời gian kiểm thử mỗi batch, số field phải đối chiếu và số mismatch bị bỏ sót. Research cho thấy đã có các giải pháp OCR/invoice extraction như AWS Textract, Google Document AI và Azure Document Intelligence, nên nhóm không cần build OCR từ đầu mà chỉ cần thiết kế workflow hỗ trợ compare và review. Vì người kiểm thử vẫn review mismatch report trước khi báo lỗi, rủi ro AI sai có thể kiểm soát được.
 
 ```
 
 **Nếu Go — pilot nhỏ nhất (data nào, chạy tay ra sao, đo 3 số nào):**
 
-```Pilot nhỏ nhất là dùng 3-5 invoice JPG mẫu và JSON output tương ứng. Nhóm chạy bán thủ công: dùng OCR/AI extract các field chính từ ảnh, dùng rule/script hoặc bảng compare để so sánh với JSON, sau đó người test review mismatch report. Ba số cần đo là: tổng thời gian kiểm thử / batch, số mismatch phát hiện được, và số mismatch bị bỏ sót sau khi review lại ảnh gốc.
+```
+Pilot nhỏ nhất là dùng 3-5 invoice JPG mẫu và JSON output tương ứng. Nhóm chạy bán thủ công: dùng OCR/AI extract các field chính từ ảnh, dùng rule/script hoặc bảng compare để so sánh với JSON, sau đó người test review mismatch report. Ba số cần đo là: tổng thời gian kiểm thử / batch, số mismatch phát hiện được, và số mismatch bị bỏ sót sau khi review lại ảnh gốc.
 
 ```
 
 **Nếu Not Yet — cần validate gì trước:**
 
-```Cần validate thêm bằng 3-5 invoice JPG mẫu và JSON output tương ứng để đo thời gian kiểm thử thật. Nhóm cũng cần hỏi 1-2 AI Intern / tester xem workflow hiện tại mất bao lâu, bước nào dễ sai nhất và mismatch nào hay bị bỏ sót.
+```
+Cần validate thêm bằng 3-5 invoice JPG mẫu và JSON output tương ứng để đo thời gian kiểm thử thật. Nhóm cũng cần hỏi 1-2 AI Intern / tester xem workflow hiện tại mất bao lâu, bước nào dễ sai nhất và mismatch nào hay bị bỏ sót.
 
 ```
 
 **Nếu No-Go — làm gì thay AI:**
 
-```Nếu không dùng AI, nhóm có thể dùng checklist field cố định và script compare JSON với ground truth do người test nhập thủ công. Cách này ít rủi ro hơn nhưng vẫn chưa giải quyết tốt bước đọc ảnh invoice JPG.
+```
+Nếu không dùng AI, nhóm có thể dùng checklist field cố định và script compare JSON với ground truth do người test nhập thủ công. Cách này ít rủi ro hơn nhưng vẫn chưa giải quyết tốt bước đọc ảnh invoice JPG.
 
 ```
 
 **Exit / rollback (khi nào dừng AI, quay về cách cũ):**
 
-```Nếu OCR/AI đọc sai nhiều, map sai field thường xuyên hoặc làm người test phải kiểm lại gần như toàn bộ invoice, nhóm sẽ dừng workflow AI và quay về checklist + rule/script compare. Nếu pilot không giảm ít nhất 30% thời gian kiểm thử so với baseline 25-40 phút / batch, nhóm chưa nên tiếp tục mở rộng giải pháp AI.
+```
+Nếu OCR/AI đọc sai nhiều, map sai field thường xuyên hoặc làm người test phải kiểm lại gần như toàn bộ invoice, nhóm sẽ dừng workflow AI và quay về checklist + rule/script compare. Nếu pilot không giảm ít nhất 30% thời gian kiểm thử so với baseline 25-40 phút / batch, nhóm chưa nên tiếp tục mở rộng giải pháp AI.
 
 ```
 
